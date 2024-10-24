@@ -6,6 +6,9 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 app.use(express.static('public'));
+app.get('/:room', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
 
 io.on('connection', (socket) => {
   console.log('New user connected');
